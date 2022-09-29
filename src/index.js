@@ -1,8 +1,15 @@
 const express = require("express");
 const app = express();
 const cors = require("cors");
-app.use(cors());
+
 app.use(express.json());
+app.use(
+	cors({
+		origin: "*",
+		credentials: true,
+		methods: ["GET", "POST", "DELETE", "UPDATE", "PUT", "PATCH"],
+	})
+);
 require("dotenv").config();
 const connect = require("./config/db");
 
@@ -12,6 +19,7 @@ const foodController = require("./controller/food.controller");
 
 
 app.use("/", foodController);
+
 
 
 app.listen(PORT, async()=>{
