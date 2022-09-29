@@ -6,7 +6,7 @@ app.use(express.json());
 require("dotenv").config();
 const connect = require("./config/db");
 
-const PORT = process.env.PORT;
+const PORT = process.env.PORT || 8080;
 
 const foodController = require("./controller/food.controller");
 
